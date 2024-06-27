@@ -120,6 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL = '/login/'  # changes login path from the default
+LOGOUT_URL = '/logout/' # changes logout path from the default
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
