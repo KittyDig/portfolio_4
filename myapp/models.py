@@ -1,28 +1,18 @@
-from django.db import models
-
-# create your models here.
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # custom User model inheriting from AbstractUser
-
-
 class User(AbstractUser):
     pass
 
-# profile model to add to the User model with more information
-
-
+# profile model to add more information to the User model
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)  # bio, which is optional
     # profile picture, which is optional
     image = models.ImageField(upload_to='profile_pics', blank=True)
 
-# post model to store blog posts or similar content
-
-
+# post model to store blog posts
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)  # title for the post
