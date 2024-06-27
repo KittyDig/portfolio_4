@@ -25,12 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # URL for the admin interface
     # includes URLs from the 'myapp' application
     path('', include('myapp.urls')),
-]
-
-
-urlpatterns += [
-    # URL pattern for user login using Django's built-in LoginView
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    # URL pattern for user logout using Django's built-in LogoutView
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', auth_views.LoginView.as_view(),
+         name='login'),  # login URL pattern
+    path('logout/', auth_views.LogoutView.as_view(),
+         name='logout'),  # logout URL pattern
 ]
