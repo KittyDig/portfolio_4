@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'fiber_angel_path_100435',
+        'USER': 'uvvfdkhyq32',
+        'PASSWORD': 'Oe39SLPmwmpT',
+        'HOST': 'ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech',
+        'PORT': '5432',
     }
 }
 
