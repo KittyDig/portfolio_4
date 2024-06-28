@@ -14,6 +14,9 @@
     {% endfor %}
         <!-- Button to go to Post Page -->
         <button id="goToPostPage">Go to Post Page</button>
+            <!-- Button to go to Register Page -->
+    <button onclick="window.location.href='{% url 'myapp:register' %}'">Go to Register Page</button>
+
             <!-- Define URLs for JavaScript -->
                 <script type="text/javascript">
                   var postsUrl = "{% url 'myapp:posts' %}";;
