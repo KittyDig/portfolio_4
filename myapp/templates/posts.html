@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{{ post.title }}</title>
+    <title>Create Post</title>
+    {% load static %}
 </head>
 <body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    <h2>Create a New Post</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
 
-        <!-- Button to go to Home Page -->
-        <button id="goToHomePage">Go to Home Page</button>
-        {% load static %}
-        <!-- JavaScript script tag -->
-        <script src="{% static 'js/navigation.js' %}"></script>
+    <!-- Button to go to Home Page -->
+    <button id="goToHomePage">Go to Home Page</button>
 
+    <!-- JavaScript script tag -->
+    <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>

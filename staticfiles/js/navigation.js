@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = postsUrl;
         });
     }
-    
-//function to go from posts page to home page
+
+    //function to go from posts page to home page
     var goToHomePageButton = document.getElementById('goToHomePage');
     if (goToHomePageButton) {
         goToHomePageButton.addEventListener('click', function() {
@@ -16,3 +16,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
