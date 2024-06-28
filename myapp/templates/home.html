@@ -12,5 +12,10 @@
       <small>By {{ post.author.username }} on {{ post.created_at }}</small>
     </div>
     {% endfor %}
+        <!-- Button to go to Post Page -->
+        <button id="goToPostPage">Go to Post Page</button>
+
+        <!-- JavaScript script tag -->
+        <script src="{% staticfiles 'js/navigation.js' %}"></script>
   </body>
 </html>

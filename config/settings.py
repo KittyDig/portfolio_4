@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default='postgres://uvvfdkhyq32:Oe39SLPmwmpT@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/fiber_angel_path_100435'
     )
 }
 
