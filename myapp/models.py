@@ -3,21 +3,7 @@ from django.db import models
 
 # custom User model inheriting from AbstractUser
 class User(AbstractUser):
-    groups = models.ManyToManyField(
-        Group,
-        related_name='user_set',
-        blank=True,
-        help_text=('The groups this user belongs to. A user will get all permissions '
-                   'granted to each of their groups.'),
-        related_query_name='user',
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        related_name='user_set',
-        blank=True,
-        help_text='Specific permissions for this user.',
-        related_query_name='user',
-    )
+    pass
 
 # profile model to add more information to the User model
 class Profile(models.Model):

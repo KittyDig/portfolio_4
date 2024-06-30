@@ -1,19 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import User
-from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm, PostForm
 from django.contrib.auth.decorators import login_required
 from .models import Post
-from .forms import PostForm
 
 # Handling user registration
 def register(request):
     if request.method == 'POST':  # if the form has been submitted
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()  # saving the user to the database
             return redirect('login')
     else:  # if it's a GET request
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     # renders the registration template with the form
     return render(request, 'register.html', {'form': form})
 
