@@ -15,6 +15,7 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -70,6 +71,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/accounts/profile/'  # Redirect to profile page after login
+LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

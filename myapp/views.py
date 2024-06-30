@@ -41,7 +41,3 @@ def posts(request):
     else:
         form = PostForm()
     return render(request, 'posts.html', {'form': form})
-
-@login_required
-def profile(request):
-    return render(request, 'profile.html')
