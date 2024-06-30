@@ -15,21 +15,18 @@ from pathlib import Path
 import django_heroku
 import dj_database_url
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jxim)2ithq35dc9gevv^xsnn4td*+^15#p9(n8a^a6@dm$j19w'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-jxim)2ithq35dc9gevv^xsnn4td*+^15#p9(n8a^a6@dm$j19w')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['portfolio-4-ci-2206a7be8c29.herokuapp.com']
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'myapp',
     'django.contrib.auth',
@@ -55,7 +52,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,26 +65,21 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'config.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/accounts/profile/'  # Redirect to profile page after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://uvvfdkhyq32:Oe39SLPmwmpT@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/fiber_angel_path_100435'
+        default=os.environ.get('DATABASE_URL', 'postgres://uvvfdkhyq32:Oe39SLPmwmpT@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/fiber_angel_path_100435')
     )
 }
 
 AUTH_USER_MODEL = 'myapp.User'
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -103,10 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -115,15 +104,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = '/static/'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Activate Django-Heroku.
