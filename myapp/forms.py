@@ -2,7 +2,7 @@
 
 from django import forms
 from .models import Post
-from .models import User
+from myapp.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class PostForm(forms.ModelForm):
