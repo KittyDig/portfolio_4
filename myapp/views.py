@@ -7,12 +7,12 @@ from .forms import PostForm
 # Handling user registration
 def register(request):
     if request.method == 'POST':  # if the form has been submitted
-        form = CustomUserCreationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()  # saving the user to the database
             return redirect('login')
     else:  # if it's a GET request
-        form = CustomUserCreationForm()
+        form = UserCreationForm()
     # renders the registration template with the form
     return render(request, 'register.html', {'form': form})
 
