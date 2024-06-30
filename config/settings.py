@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['portfolio-4-ci-2206a7be8c29.herokuapp.com']
 
 # Application definition
 
-AUTH_USER_MODEL = 'myapp.User'
+AUTH_USER_MODEL = 'auth.User'
 
 INSTALLED_APPS = [
     'myapp',
