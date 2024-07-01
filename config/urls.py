@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import include, path
-from myapp import views  # Import the views from your application
+from myapp import views  # imports the views from your application
+
+app_name = 'myapp'
 
 # defines the URL patterns for the whole project
 urlpatterns = [
