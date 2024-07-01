@@ -5,25 +5,25 @@
   </head>
   <body>
     <h2>Posts</h2>
-    {% for post in posts %}
-    <div>
-      <h3>{{ post.title }}</h3>
-      <p>{{ post.content }}</p>
-      <small>By {{ post.author.username }} on {{ post.created_at }}</small>
-    </div>
-    {% endfor %}
-        <!-- Button to go to Post Page -->
-        <button id="goToPostPage">Go to Post Page</button>
-            <!-- Button to go to Register Page -->
-    <button onclick="window.location.href='{% url 'myapp:register' %}'">Go to Register Page</button>
-
-            <!-- Define URLs for JavaScript -->
-                <script type="text/javascript">
-                  var postsUrl = "{% url 'myapp:posts' %}";;
-                  var homeUrl = "{% url 'myapp:home' %}";
-              </script>
-        {% load static %}
-        <!-- JavaScript script tag -->
-        <script src="{% static 'js/navigation.js' %}"></script>
+    {% if user.is_authenticated %}
+      {% for post in posts %}
+      <div>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <small>By {{ post.author.username }} on {{ post.created_at }}</small>
+      </div>
+      {% endfor %}
+      <!-- Button to go to Post Page -->
+      <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
+      <!-- Button to view Profile -->
+      <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
+      <!-- Button to logout -->
+      <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
+    {% else %}
+      <!-- Button to go to Login Page -->
+      <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
+      <!-- Button to go to Register Page -->
+      <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
+    {% endif %}
   </body>
 </html>
