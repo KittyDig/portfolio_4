@@ -45,4 +45,4 @@ def posts(request):
 # view for the profile page
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'accounts/profile.html')
