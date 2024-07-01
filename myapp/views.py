@@ -23,13 +23,13 @@ def home(request):
     return render(request, 'home.html', {'posts': posts})
 
 # Blog post detail view with login required
-# @login_required  # ensures the user is logged in to view this page
+@login_required  # ensures the user is logged in to view this page
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, 'post_detail.html', {'post': post})
 
 # view for creating a new post
-# @login_required  # ensures the user is logged in to view this page
+@login_required  # ensures the user is logged in to view this page
 def posts(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -43,6 +43,6 @@ def posts(request):
     return render(request, 'posts.html', {'form': form})
 
 # view for the profile page
-    @login_required
+@login_required
 def profile(request):
     return render(request, 'profile.html')
