@@ -58,4 +58,4 @@ def delete_post(request, post_id):
     if request.method == 'POST':
         post.delete()
         return redirect('myapp:profile')
-    return render(request, 'confirm_delete.html', {'post': post})
+    return render(request, 'confirmDeletePost.html', {'post': post})

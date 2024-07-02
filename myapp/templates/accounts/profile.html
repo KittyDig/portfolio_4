@@ -13,18 +13,20 @@
   <!-- Button to logout -->
   <a href="{% url 'myapp:logout' %}"><button>Logout</button></a>
 
-    <!-- Display user's posts -->
-    <h3>Your Posts</h3>
-    <ul>
-      {% for post in user_posts %}
-        <li>
-          {{ post.title }}
-          <form action="{% url 'myapp:delete_post' post.id %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit">Delete</button>
-          </form>
-        </li>
-      {% endfor %}
-    </ul>
+  <!-- Display user's posts -->
+  <h3>Your Posts</h3>
+  <ul>
+    {% for post in user_posts %}
+      <li>
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.content }}</p>
+        <form action="{% url 'myapp:delete_post' post.id %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit">Delete</button>
+        </form>
+        <a href="{% url 'myapp:confirm_delete' post.id %}">Delete with Confirmation</a>
+      </li>
+    {% endfor %}
+  </ul>
 </body>
 </html>
