@@ -46,3 +46,12 @@ def posts(request):
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
+# for deleting posts from the users page
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('myapp:profile')
+    return render(request, 'confirm_delete.html', {'post': post})
