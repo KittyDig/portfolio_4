@@ -45,7 +45,11 @@ def posts(request):
 # view for the profile page
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    user_posts = Post.objects.filter(author=request.user)
+    context = {
+        'user_posts': user_posts,
+    }
+    return render(request, 'profile.html', context)
 
 # for deleting posts from the users page
 @login_required
