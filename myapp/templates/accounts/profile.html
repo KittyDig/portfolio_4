@@ -28,6 +28,10 @@
           <input type="hidden" name="post_id" value="{{ post.id }}">
         </form>
         
+                  <!-- Button to show modal confirmation -->
+                  <button type="button" onclick="showConfirmation('{{ post.id }}')">Delete Post</button>
+                </form>
+
         <!-- Modal dialog for confirmation -->
         <div id="myModal_{{ post.id }}" class="modal">
           <div class="modal-content">
