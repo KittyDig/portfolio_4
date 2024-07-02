@@ -24,7 +24,8 @@
           {% csrf_token %}
           <button type="submit">Delete</button>
         </form>
-        <a href="{% url 'myapp:confirm_delete' post.id %}">Delete with Confirmation</a>
+        <!-- JavaScript to show a confirmation dialog -->
+        <button onclick="showConfirmation({{ post.id }})">Delete with Confirmation</button>
       </li>
     {% endfor %}
   </ul>
