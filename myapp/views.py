@@ -59,3 +59,17 @@ def delete_post(request, post_id):
         post.delete()
         return redirect('myapp:profile')
     return render(request, 'confirmDeletePost.html', {'post': post})
+
+# for making and updating the optional bio
+def edit_bio(request):
+    profile = Profile.objects.get_or_create(user=request.user)[0]
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('myapp:profile')
+    else:
+        form = ProfileForm(instance=profile)
+    
+    return render(request, 'myapp/edit_bio.html', {'form': form})
