@@ -4,6 +4,7 @@ from django import forms
 from .models import Post
 from myapp.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Profile
 
 class PostForm(forms.ModelForm):
     class Meta:
