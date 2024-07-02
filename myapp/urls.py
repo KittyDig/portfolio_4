@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),  # URL for the login page
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),  # URL for the logout page
     path('profile/', views.profile, name='profile'), # profile URL
+    path('delete_post/<int:post_id>/', views.delete_post, name='delete_post'), # URL for deleting posts from your own account
 ]
