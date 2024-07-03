@@ -72,4 +72,4 @@ def edit_bio(request):
     else:
         form = ProfileForm(instance=profile)
     
-    return render(request, 'myapp/editBio.html', {'form': form})
+    return render(request, 'editBio.html', {'form': form})
