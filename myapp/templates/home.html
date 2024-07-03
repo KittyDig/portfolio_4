@@ -23,7 +23,6 @@
           <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
         </div>
       {% endfor %}
-      <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
     {% else %}
     <h2>Please log in or register to view all posts</h2>
       <!-- Button to go to Login Page -->
