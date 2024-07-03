@@ -9,7 +9,7 @@ body {
 
 /* Container for padding */
 .container {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   max-width: 800px;
   padding: 1rem;
@@ -20,13 +20,23 @@ body {
 }
 
 /* Typography */
-h2, h3, h4 {
-  color: #333;
-  text-align: center;
-}
 
 h2 {
-  size: 6rem;
+  color: #333;
+  text-align: center;
+  font-size: 6rem;
+}
+
+h3 {
+  color: #333;
+  text-align: center;
+  font-size: 4rem;
+}
+
+h3 {
+  color: #333;
+  text-align: center;
+  font-size: 2rem;
 }
 
 p {
