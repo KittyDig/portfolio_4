@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import User, Post, Profile
 from .forms import CustomUserCreationForm, PostForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Profile
 
 # Handling user registration
 def register(request):
