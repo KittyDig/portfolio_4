@@ -25,6 +25,10 @@ h2, h3, h4 {
   text-align: center;
 }
 
+h2 {
+  size: 2rem;
+}
+
 p {
   line-height: 1.6;
 }
