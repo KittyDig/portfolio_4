@@ -4,6 +4,10 @@ This is a Django project that includes user authentication, profile management, 
 
 ## Table of Contents
 
+- [Motivation](#motivation)
+- [Problem Solved](#problem-solved)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
@@ -23,6 +27,31 @@ This is a Django project that includes user authentication, profile management, 
   - [Profile Template](#profile-template)
 - [Static Files](#static-files)
 - [Routes](#routes)
+
+## Motivation
+
+The primary motivation for building this project was to create a personal blogging site where users can showcase their posts and share their thoughts through blog posts.
+
+## Problem Solved
+
+This project addresses the need for a simple yet functional platform where individuals can maintain a personal blog. It provides an easy-to-use interface for users to register, create and manage content, and interact with their profiles. This can be particularly useful for developers, designers, and other professionals who want to share updates or articles.
+
+## Technologies Used
+
+- **Django**
+- **PostgreSQL**
+- **Django-Heroku**
+- **HTML/CSS**
+
+## Features
+
+- **User Registration and Authentication**: Allows users to create accounts, log in, and log out.
+- **Custom User Model**: Uses a custom user model to extend the default Django user functionality.
+- **User Profile Management**: Users can edit their bio.
+- **Blog Post Management**: Users can create, read, update, and delete blog posts.
+- **Responsive Design**: Ensures the application is accessible on various devices.
+- **Secure and Scalable**: Configured for secure authentication and deployed on Heroku for scalability.
+
 
 ## Installation
 
