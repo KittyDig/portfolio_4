@@ -48,6 +48,7 @@ def profile(request):
     user_posts = Post.objects.filter(author=request.user)
     context = {
         'user_posts': user_posts,
+        'bio': profile.bio,
     }
     return render(request, 'accounts/profile.html', context)
 
