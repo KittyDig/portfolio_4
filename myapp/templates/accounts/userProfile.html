@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Profile</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
+  <title>User Profile</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
 </head>
 <body>
+  <div class="container">
     <h2>User Profile: {{ user_obj.username }}</h2>
-
+    
     {% if bio %}
-    <p>Bio: {{ bio }}</p>
+      <p>Bio: {{ bio }}</p>
     {% endif %}
-
+    
     <h3>Posts by {{ user_obj.username }}</h3>
     <ul>
-        {% for post in user_posts %}
-        <li>
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.content }}</p>
-            <small>Posted on: {{ post.created_at }}</small>
+      {% for post in user_posts %}
+        <li class="post-box">
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.content }}</p>
+          <small>Posted on: {{ post.created_at }}</small>
         </li>
-        {% empty %}
+      {% empty %}
         <li>No posts found.</li>
-        {% endfor %}
+      {% endfor %}
     </ul>
+    
     <!-- Button to go to Home Page -->
     <button id="goToHomePage">Go to Home Page</button>
-    
-    <!-- JavaScript script tag -->
-    <script>
-        var homeUrl = "{% url 'myapp:home' %}";
-    </script>
-    <script src="{% static 'js/navigation.js' %}"></script>
+  </div>
+  
+  <!-- JavaScript script tag -->
+  <script>
+    var homeUrl = "{% url 'myapp:home' %}";
+  </script>
+  <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>

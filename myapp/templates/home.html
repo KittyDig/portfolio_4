@@ -6,32 +6,32 @@
   <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
 </head>
 <body>
-  <h2>Welcome to the Home Page</h2>
+  <div class="container">
+    <h2>Welcome to the Home Page, please log in or register to view all posts</h2>
 
-  {% if user.is_authenticated %}
-    {% for post in posts %}
-      <div>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-        <small>By <a href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
-      </div>
-    {% endfor %}
-    <!-- Button to go to Post Page -->
-    <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-    <!-- Button to view Profile -->
-    <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
-    <!-- Button to logout -->
-    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
-      {% csrf_token %}
-    </form>
-    <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
-    
-  {% else %}
-    <!-- Button to go to Login Page -->
-    <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
-    <!-- Button to go to Register Page -->
-    <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
-  {% endif %}
-  
+    {% if user.is_authenticated %}
+      {% for post in posts %}
+        <div class="post-box">
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content }}</p>
+          <small>By <a href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
+        </div>
+      {% endfor %}
+      <!-- Button to go to Post Page -->
+      <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
+      <!-- Button to view Profile -->
+      <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
+      <!-- Button to logout -->
+      <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+        {% csrf_token %}
+      </form>
+      <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
+    {% else %}
+      <!-- Button to go to Login Page -->
+      <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
+      <!-- Button to go to Register Page -->
+      <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
+    {% endif %}
+  </div>
 </body>
 </html>
