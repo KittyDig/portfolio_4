@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>User Profile</title>
+    {% load static %}
 </head>
 <body>
     <h2>User Profile: {{ user_obj.username }}</h2>
@@ -24,6 +25,7 @@
     </ul>
         <!-- Button to go to Home Page -->
         <button id="goToHomePage">Go to Home Page</button>
-
+    <!-- JavaScript script tag -->
+    <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>
