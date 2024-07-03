@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Profile</title>
+    <title>User Profile</title>
 </head>
 <body>
-  <h2>User Profile</h2>
-  
-  <p>Username: {{ user_obj.username }}</p>
-  <p>Bio: {{ user_obj.profile.bio }}</p>
-  
-  <h3>User's Posts</h3>
-  <ul>
-    {% for post in user_posts %}
-      <li>
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.content }}</p>
-        <small>By {{ post.author.username }} on {{ post.created_at }}</small>
-      </li>
-    {% endfor %}
-  </ul>
-  
+    <h2>User Profile: {{ user_obj.username }}</h2>
+
+    {% if bio %}
+    <p>Bio: {{ bio }}</p>
+    {% endif %}
+
+    <h3>Posts by {{ user_obj.username }}</h3>
+    <ul>
+        {% for post in user_posts %}
+        <li>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+            <small>Posted on: {{ post.created_at }}</small>
+        </li>
+        {% empty %}
+        <li>No posts found.</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

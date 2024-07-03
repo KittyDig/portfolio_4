@@ -86,9 +86,11 @@ def post_detail(request, post_id):
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
     user_posts = Post.objects.filter(author=user)
+    profile = Profile.objects.get_or_create(user=user)[0]  # fetchs or creates user's profile
 
     context = {
         'user_obj': user,
         'user_posts': user_posts,
+        'bio': profile.bio,  # for if the user has a bio
     }
     return render(request, 'accounts/userProfile.html', context)
