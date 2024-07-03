@@ -23,9 +23,13 @@
         <li>No posts found.</li>
         {% endfor %}
     </ul>
-        <!-- Button to go to Home Page -->
-        <button id="goToHomePage">Go to Home Page</button>
+    <!-- Button to go to Home Page -->
+    <button id="goToHomePage">Go to Home Page</button>
+    
     <!-- JavaScript script tag -->
+    <script>
+        var homeUrl = "{% url 'myapp:home' %}";
+    </script>
     <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>
