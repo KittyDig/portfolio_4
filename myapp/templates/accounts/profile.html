@@ -18,8 +18,8 @@
   <!-- Display the user's bio -->
   <p>Bio: {% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
   
-  <!-- Button to logout -->
-  <a href="{% url 'myapp:logout' %}"><button>Logout</button></a>
+    <!-- Button to logout -->
+    <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
 
   <!-- Display user's posts -->
   <h3>Your Posts</h3>
