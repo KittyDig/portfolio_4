@@ -75,3 +75,20 @@ def edit_bio(request):
         form = ProfileForm(instance=profile)
     
     return render(request, 'editBio.html', {'form': form})
+
+# show other users profiles to see information on them
+    @login_required
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'post_detail.html', {'post': post})
+
+@login_required
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    user_posts = Post.objects.filter(author=user)
+
+    context = {
+        'user_obj': user,
+        'user_posts': user_posts,
+    }
+    return render(request, 'accounts/userProfile.html', context)
