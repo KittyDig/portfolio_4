@@ -15,9 +15,7 @@
           <!-- Button to view Profile -->
           <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
           <!-- Button to logout -->
-          <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
-            {% csrf_token %}
-          </form>
+          <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
       {% for post in posts %}
         <div class="post-box">
           <h3>{{ post.title }}</h3>
