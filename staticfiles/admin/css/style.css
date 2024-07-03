@@ -107,16 +107,22 @@ form button:hover {
 }
 
 /* Post styles */
+.post-box {
+  background-color: #e9ecef;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.post-box:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
 ul {
   list-style: none;
   padding: 0;
-}
-
-li {
-  background-color: #e9ecef;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 h4 {
@@ -135,16 +141,16 @@ h4 {
 /* Responsive styles */
 @media (max-width: 768px) {
   .container {
-      width: 95%;
-      padding: 10px;
+    width: 95%;
+    padding: 10px;
   }
 
   button {
-      width: 100%;
-      margin: 10px 0;
+    width: 100%;
+    margin: 10px 0;
   }
 
   .modal-content {
-      width: 90%;
+    width: 90%;
   }
 }
