@@ -14,4 +14,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'), # profile URL
     path('delete_post/<int:post_id>/', views.delete_post, name='delete_post'), # URL for deleting posts from your own account
     path('edit_bio/', views.edit_bio, name='edit_bio'), # URL for bio editing
+    path('user/<str:username>/', views.user_profile, name='user_profile'), # for viewing other profiles
 ]
