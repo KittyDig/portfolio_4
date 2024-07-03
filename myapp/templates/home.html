@@ -10,6 +10,14 @@
 
     {% if user.is_authenticated %}
     <h2>Welcome to the Home Page</h2>
+          <!-- Button to go to Post Page -->
+          <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
+          <!-- Button to view Profile -->
+          <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
+          <!-- Button to logout -->
+          <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+            {% csrf_token %}
+          </form>
       {% for post in posts %}
         <div class="post-box">
           <h3>{{ post.title }}</h3>
@@ -17,14 +25,6 @@
           <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
         </div>
       {% endfor %}
-      <!-- Button to go to Post Page -->
-      <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-      <!-- Button to view Profile -->
-      <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
-      <!-- Button to logout -->
-      <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
-        {% csrf_token %}
-      </form>
       <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
     {% else %}
     <h2>Please log in or register to view all posts</h2>
