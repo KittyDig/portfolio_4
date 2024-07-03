@@ -11,5 +11,13 @@
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Register</button>
     </form>
+        <!-- Button to go to Home Page -->
+        <button id="goToHomePage">Go to Home Page</button>
+    
+        <!-- JavaScript script tag -->
+        <script>
+            var homeUrl = "{% url 'myapp:home' %}";
+        </script>
+        <script src="{% static 'js/navigation.js' %}"></script>
   </body>
 </html>

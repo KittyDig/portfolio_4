@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Create Post</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
 </head>
 <body>
     <h2>Create a New Post</h2>
@@ -15,8 +15,11 @@
 
     <!-- Button to go to Home Page -->
     <button id="goToHomePage">Go to Home Page</button>
-
+    
     <!-- JavaScript script tag -->
+    <script>
+        var homeUrl = "{% url 'myapp:home' %}";
+    </script>
     <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>
