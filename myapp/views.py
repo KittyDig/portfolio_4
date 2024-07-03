@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import User, Post, Profile
 from .forms import CustomUserCreationForm, PostForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
-from .models import Post, Profile
 
 # Handling user registration
 def register(request):
@@ -63,6 +62,7 @@ def delete_post(request, post_id):
     return render(request, 'confirmDeletePost.html', {'post': post})
 
 # for making and updating the optional bio
+@login_required
 def edit_bio(request):
     profile = Profile.objects.get_or_create(user=request.user)[0]
 
@@ -77,11 +77,6 @@ def edit_bio(request):
     return render(request, 'editBio.html', {'form': form})
 
 # show other users profiles to see information on them
-    @login_required
-def post_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    return render(request, 'post_detail.html', {'post': post})
-
 @login_required
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
