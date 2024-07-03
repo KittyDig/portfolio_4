@@ -7,17 +7,20 @@
   </head>
 <body>
   <h2>Profile</h2>
-  <p>Username: {{ user.username }}</p>
+  <p>Username: {{ request.user.username }}</p>
   
   <!-- Button to go to Home Page -->
   <a href="{% url 'myapp:home' %}"><button>Go to Home Page</button></a>
 
-      <!-- Link to edit bio -->
-      <a href="{% url 'myapp:edit_bio' %}">Edit Bio</a>
-      <p>Bio: {{ bio }}</p> <!-- show the users bio here -->
+  <!-- Link to edit bio -->
+  <a href="{% url 'myapp:edit_bio' %}">Edit Bio</a>
+  
+  <!-- Display the user's bio -->
+  <p>Bio: {% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
   
   <!-- Button to logout -->
   <a href="{% url 'myapp:logout' %}"><button>Logout</button></a>
+
   <!-- Display user's posts -->
   <h3>Your Posts</h3>
   <ul>
@@ -32,9 +35,8 @@
           <input type="hidden" name="post_id" value="{{ post.id }}">
         </form>
         
-                  <!-- Button to show modal confirmation -->
-                  <button type="button" onclick="showConfirmation('{{ post.id }}')">Delete Post</button>
-                </form>
+        <!-- Button to show modal confirmation -->
+        <button type="button" onclick="showConfirmation('{{ post.id }}')">Delete Post</button>
 
         <!-- Modal dialog for confirmation -->
         <div id="myModal_{{ post.id }}" class="modal">
@@ -49,6 +51,7 @@
       </li>
     {% endfor %}
   </ul>
+  
   <script>
     // Function to display modal
     function showConfirmation(postId) {

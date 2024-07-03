@@ -46,6 +46,7 @@ def posts(request):
 @login_required
 def profile(request):
     user_posts = Post.objects.filter(author=request.user)
+    profile = Profile.objects.get_or_create(user=request.user)[0]  # fetch or create user's profile
     context = {
         'user_posts': user_posts,
         'bio': profile.bio,
