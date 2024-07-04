@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var goToHomePageButton = document.getElementById('goToHomePage');
     if (goToHomePageButton) {
         goToHomePageButton.addEventListener('click', function() {
-            window.location.href = homeUrl;
+            window.location.href = home;
         });
     }
 });
