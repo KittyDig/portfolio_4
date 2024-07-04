@@ -63,4 +63,13 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
+                migrations.CreateModel(
+            name='PostLike',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('user', models.ForeignKey(to='auth.User', on_delete=models.CASCADE)),
+                ('post', models.ForeignKey(to='myapp.Post', on_delete=models.CASCADE)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+            ],
+        ),
     ]
