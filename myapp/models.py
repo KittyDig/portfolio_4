@@ -18,7 +18,7 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='post_likes')
+    likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
 
     def total_likes(self):
         return self.likes.count()

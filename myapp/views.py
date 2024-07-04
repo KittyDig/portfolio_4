@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import User, Post, Profile
 from .forms import CustomUserCreationForm, PostForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 # Handling user registration
 def register(request):
@@ -81,7 +82,7 @@ def edit_bio(request):
 def user_profile(request, username):
     user = get_object_or_404(User, username=username)
     user_posts = Post.objects.filter(author=user)
-    profile = Profile.objects.get_or_create(user=user)[0]  # fetchs or creates user's profile
+    profile = Profile.objects.get_or_create(user=user)[0]  # fetches or creates user's profile
 
     context = {
         'user_obj': user,
