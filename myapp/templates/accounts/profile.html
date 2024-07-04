@@ -11,12 +11,15 @@
     
     <!-- Button to go to Post Page -->
       <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-    <!-- Button to logout -->
-      <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
     <!-- Link to edit bio -->
     <a href="{% url 'myapp:edit_bio' %}" class="button-link"><button>Edit Bio</button></a>
     <!-- Button to go to Home Page -->
     <button id="goToHomePage">Go to Home Page</button>
+        <!-- Button to logout -->
+        <form action="{% url 'myapp:logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
     <!-- Display the user's bio -->
     <p>Bio: {% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
     
