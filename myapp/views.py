@@ -89,3 +89,13 @@ def user_profile(request, username):
         'bio': profile.bio,  # for if the user has a bio
     }
     return render(request, 'accounts/userProfile.html', context)
+
+# for liking posts
+@login_required
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return JsonResponse({'total_likes': post.total_likes()})

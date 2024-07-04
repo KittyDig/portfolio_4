@@ -174,5 +174,9 @@ The routes for my application are defined in the urls.py file.
 - https://coolors.co/ - For theme colour ideas.
 # Views
 - https://github.com/Akash1362000/Django_BlogApp - Help with understanding views.
+- https://github.com/shivamforever/django-Codewithnc.py/ - Based structure of views on parts of this code.
+- https://mentix02.medium.com/writing-instagram-in-python-liking-posts-51e072e4c51f - For help with liking posts code.
 # Models
 - https://docs.djangoproject.com/en/5.0/topics/auth/customizing/ - Help with understanding custom models.
+- https://stackoverflow.com/questions/75121950/how-to-use-authenticate-method-with-abstractuser-model-django help with the authentication model.
+- https://medium.com/@engr.tanveersultan53/abstractuser-vs-abstractbaseuser-in-django-7f231a276988 - Finding information on abstractuser to see what authentication model to use.

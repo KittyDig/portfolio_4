@@ -18,3 +18,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)  # title for the post
     content = models.TextField()  # content of the post
     created_at = models.DateTimeField(auto_now_add=True)  # timestamp for post
+    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+
+    def total_likes(self):
+        return self.likes.count()

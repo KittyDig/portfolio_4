@@ -23,6 +23,16 @@
           <h3>{{ post.title }}</h3>
           <p>{{ post.content }}</p>
           <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
+                  <!-- Like button and count -->
+        <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
+          {% if user in post.likes.all %}
+            Unlike
+          {% else %}
+            Like
+          {% endif %}
+        </button>
+        <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
+      </div>
         </div>
       {% endfor %}
     {% else %}
@@ -33,5 +43,37 @@
       <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
     {% endif %}
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var likeButtons = document.querySelectorAll('.like-button');
+      
+      likeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          var postId = this.getAttribute('data-post-id');
+          var likeButton = this;
+          var likeCount = document.getElementById('like-count-' + postId);
+
+          fetch(`/like/${postId}/`, {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+          })
+          .then(response => response.json())
+          .then(data => {
+            likeCount.textContent = data.total_likes;
+            if (likeButton.textContent.trim() === 'Like') {
+              likeButton.textContent = 'Unlike';
+            } else {
+              likeButton.textContent = 'Like';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>

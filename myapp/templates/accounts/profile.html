@@ -12,13 +12,16 @@
     <h2>{{ request.user.username }}'s Account</h2>
     
     <!-- Display the user's bio -->
-      <p class="bio">{% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
+    <p class="bio">{% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
     <!-- Button to go to Post Page -->
-      <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-    <!-- Button to logout -->
-      <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
+    <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
     <!-- Link to edit bio -->
     <a href="{% url 'myapp:edit_bio' %}" class="button-link"><button>Edit Bio</button></a>
+    <!-- Button to logout -->
+    <form id="logoutForm" action="{% url 'myapp:logout' %}" method="post" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
     
     <!-- Display user's posts -->
     <h3>Your Posts</h3>

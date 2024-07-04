@@ -14,7 +14,7 @@
     {% if bio %}
       <p class="bio">{{ bio }}</p>
     {% endif %}
-    
+
         <!-- Button to go to Home Page -->
         <button id="goToHomePage">Go to Home Page</button>
     <h3>Posts by {{ user_obj.username }}</h3>
@@ -24,6 +24,15 @@
           <h4>{{ post.title }}</h4>
           <p>{{ post.content }}</p>
           <small>Posted on: {{ post.created_at }}</small>
+          <!-- Like button and count -->
+          <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
+            {% if user in post.likes.all %}
+              Unlike
+            {% else %}
+              Like
+            {% endif %}
+          </button>
+          <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
         </li>
       {% empty %}
         <li>No posts found.</li>
@@ -33,7 +42,35 @@
   
   <!-- JavaScript script tag -->
   <script>
-    var homeUrl = "{% url 'myapp:home' %}";
+    document.addEventListener('DOMContentLoaded', function () {
+      var likeButtons = document.querySelectorAll('.like-button');
+      
+      likeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          var postId = this.getAttribute('data-post-id');
+          var likeButton = this;
+          var likeCount = document.getElementById('like-count-' + postId);
+
+          fetch(`/like/${postId}/`, {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+          })
+          .then(response => response.json())
+          .then(data => {
+            likeCount.textContent = data.total_likes;
+            if (likeButton.textContent.trim() === 'Like') {
+              likeButton.textContent = 'Unlike';
+            } else {
+              likeButton.textContent = 'Like';
+            }
+          });
+        });
+      });
+    });
   </script>
   <script src="{% static 'js/navigation.js' %}"></script>
 </body>
