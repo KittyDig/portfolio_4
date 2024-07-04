@@ -12,18 +12,20 @@
 
     {% if user.is_authenticated %}
     <h2>Welcome to the Home Page</h2>
-          <!-- Button to go to Post Page -->
-          <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-          <!-- Button to view Profile -->
-          <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
-          <!-- Button to logout -->
-          <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
-      {% for post in posts %}
-        <div class="post-box">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.content }}</p>
-          <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
-                  <!-- Like button and count -->
+    <!-- Button to go to Post Page -->
+    <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
+    <!-- Button to view Profile -->
+    <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
+    <!-- Button to logout -->
+    <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
+
+    {% for post in posts %}
+      <div class="post-box">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
+        
+        <!-- Like button and count -->
         <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
           {% if user in post.likes.all %}
             Unlike
@@ -33,14 +35,13 @@
         </button>
         <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
       </div>
-        </div>
-      {% endfor %}
+    {% endfor %}
     {% else %}
     <h2>Please log in or register to view all posts</h2>
-      <!-- Button to go to Login Page -->
-      <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
-      <!-- Button to go to Register Page -->
-      <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
+    <!-- Button to go to Login Page -->
+    <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
+    <!-- Button to go to Register Page -->
+    <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
     {% endif %}
   </div>
 
