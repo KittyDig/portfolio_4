@@ -25,16 +25,15 @@
         <p>{{ post.content }}</p>
         <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
         
-          <!-- Like button and count -->
-          <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
-            {% if user in post.likes.all %}
-              Unlike
-            {% else %}
-              Like
-            {% endif %}
-          </button>
-          <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
-        </li>
+        <!-- Like button and count -->
+        <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
+          {% if user in post.likes.all %}
+            Unlike
+          {% else %}
+            Like
+          {% endif %}
+        </button>
+        <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
       </div>
     {% endfor %}
     {% else %}
