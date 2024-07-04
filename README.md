@@ -8,6 +8,7 @@ This is a Django project that includes user authentication, profile management, 
 - [Problem Solved](#problem-solved)
 - [Technologies Used](#technologies-used)
 - [Features](#features)
+- [Testing](#testing)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
@@ -56,6 +57,12 @@ This project addresses the need for a simple yet functional platform where peopl
 - **Responsive Design**: Ensures the application is accessible on various devices.
 - **Secure and Scalable**: Configured for secure authentication with passwords encrypted in the database and deployed on Heroku for scalability.
 
+## Testing
+To ensure thorough testing of my Django project, I got help from a few friends with varying levels of technical expertise to ensure the project was usable by people of many different levels. Each friend was assigned specific tasks and scenarios to test across different browsers and devices. The testing phase began with user registration and authentication, focusing on account creation, and login/logout processes. They tested profile management, including bio editing and viewing other users' profiles to ensure links lead where they were meant to. Post management features, such as creating and deleting posts, were rigorously tested to make sure the database was connected and working as it should. Throughout the testing period, my friends reported back to me with any issues they had, one being that the logout button was not leading them to the correct page, it was giving them an error. This collaborative approach enabled us to address bugs promptly, refine user interfaces for clarity, and enhance overall usability before final deployment.
+
+# Lighthouse
+![lighthouse](staticfiles/admin/img/lighthouse4.png)
+- This website performed well in lighthouse, giving excellent reviews for all three aspects.
 
 ## Installation
 
