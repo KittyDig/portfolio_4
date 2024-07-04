@@ -69,7 +69,9 @@
       document.getElementById('deleteForm_' + postId).submit();
     }
     </script>
-    <script src="{% static 'js/navigation.js' %}"></script>
+        <script>
+          var homeUrl = "{% url 'myapp:home' %}";
+      </script>
   </body>
 </body>
 </html>
