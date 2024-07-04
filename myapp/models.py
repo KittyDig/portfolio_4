@@ -18,11 +18,3 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
-
-    def total_likes(self):
-        return self.likes.count()
-
-class PostLike(models.Model):
-    post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='likes', on_delete=models.CASCADE)
