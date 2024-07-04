@@ -158,7 +158,7 @@ ul {
 }
 
 /* Responsive styles */
-@media (max-width: 900px) {
+@media screen and (max-width:900px) {
   .container {
     width: 95%;
     padding: 10px;
