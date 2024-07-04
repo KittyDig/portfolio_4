@@ -14,12 +14,16 @@ import os
 from pathlib import Path
 import django_heroku
 import dj_database_url
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-jxim)2ithq35dc9gevv^xsnn4td*+^15#p9(n8a^a6@dm$j19w')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
@@ -73,7 +77,7 @@ LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
 # Database
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'postgres://uvvfdkhyq32:Oe39SLPmwmpT@ep-gentle-mountain-a23bxz6h.eu-central-1.aws.neon.tech/fiber_angel_path_100435')
+        default=os.environ.get('DATABASE_URL')
     )
 }
 

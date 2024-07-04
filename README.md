@@ -1,6 +1,8 @@
 # My Django Project
 
 This is a Django project that includes user authentication, profile management, and post management features. Users can create accounts, log in, edit their optional bio, create posts, view other user's accounts, and delete their posts with confirmation dialogs.
+![view1](staticfiles/admin/img/view1.png)
+![view2](staticfiles/admin/img/view2.png)
 
 ## Table of Contents
 
@@ -104,6 +106,7 @@ Ensure you have configured your settings.py file correctly, especially for DATAB
 2. Create, view, and manage user profiles and posts from the admin panel or through the provided forms and views.
 
 ## Project Structure
+```
 portfolio_4/
 ├── myapp/
 │   ├── templates/
@@ -124,6 +127,7 @@ portfolio_4/
 ├── staticfiles/
 ├── manage.py
 └── requirements.txt
+```
 
 ## Models
 
