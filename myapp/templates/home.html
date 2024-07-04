@@ -9,71 +9,47 @@
 </head>
 <body>
   <div class="container">
-    {% if user.is_authenticated %}
-      <h2>Welcome to the Home Page</h2>
-      <!-- Button to go to Post Page -->
-      <button id="goToPostPage">Go to Post Page</button>
-      <!-- Button to view Profile -->
-      <button id="viewProfile">View Profile</button>
-      <!-- Button to logout -->
-      <button id="logout">Logout</button>
 
-      <h3>All Posts</h3>
-      <ul>
-        {% for post in posts %}
-          <li class="post-box">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.content }}</p>
-            <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
-            
-            <!-- Like button and count -->
-            <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
-              {% if user in post.likes.all %}
-                Unlike
-              {% else %}
-                Like
-              {% endif %}
-            </button>
-            <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
-          </li>
-        {% empty %}
-          <li>No posts found.</li>
-        {% endfor %}
-      </ul>
+    {% if user.is_authenticated %}
+    <h2>Welcome to the Home Page</h2>
+    <!-- Button to go to Post Page -->
+    <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
+    <!-- Button to view Profile -->
+    <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
+    <!-- Button to logout -->
+    <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
+
+    {% for post in posts %}
+      <div class="post-box">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.content }}</p>
+        <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
+        
+        <!-- Like button and count -->
+        <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
+          {% if user in post.likes.all %}
+            Unlike
+          {% else %}
+            Like
+          {% endif %}
+        </button>
+        <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
+      </div>
+    {% endfor %}
     {% else %}
-      <h2>Please log in or register to view all posts</h2>
-      <!-- Button to go to Login Page -->
-      <button id="goToLoginPage">Login</button>
-      <!-- Button to go to Register Page -->
-      <button id="goToRegisterPage">Register</button>
+    <h2>Please log in or register to view all posts</h2>
+    <!-- Button to go to Login Page -->
+    <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
+    <!-- Button to go to Register Page -->
+    <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
     {% endif %}
   </div>
 
   <!-- JavaScript script tag -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      document.getElementById('goToPostPage').addEventListener('click', function() {
-        window.location.href = '{% url "myapp:posts" %}';
-      });
-
-      document.getElementById('viewProfile').addEventListener('click', function() {
-        window.location.href = '{% url "myapp:profile" %}';
-      });
-
-      document.getElementById('logout').addEventListener('click', function() {
-        window.location.href = '{% url "myapp:logout" %}';
-      });
-
-      document.getElementById('goToLoginPage').addEventListener('click', function() {
-        window.location.href = '{% url "myapp:login" %}';
-      });
-
-      document.getElementById('goToRegisterPage').addEventListener('click', function() {
-        window.location.href = '{% url "myapp:register" %}';
-      });
-
       var likeButtons = document.querySelectorAll('.like-button');
-
+      
       likeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
           var postId = this.getAttribute('data-post-id');
