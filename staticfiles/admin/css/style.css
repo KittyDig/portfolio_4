@@ -20,7 +20,6 @@ body {
 }
 
 /* Typography */
-
 h2 {
   color: #333;
   text-align: center;
@@ -36,7 +35,7 @@ h3 {
 h4 {
   color: #333;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 p {
@@ -175,28 +174,23 @@ ul {
   }
 
   h2 {
-    font-size: 12rem;
+    font-size: 2rem;
   }
 
   h3 {
-    color: #333;
-    text-align: center;
-    font-size: 10rem;
+    font-size: 1.5rem;
   }
   
   h4 {
-    color: #333;
-    text-align: center;
-    font-size: 8rem;
+    font-size: 1.2rem;
   }
 
   p {
-    line-height: 1.6;
-    font-size: 7rem;
+    font-size: 1rem;
   }
 
   button {
-    padding: 20px 30px;
-    font-size: 2rem;
+    padding: 15px 20px;
+    font-size: 1.2rem;
   }
 }
