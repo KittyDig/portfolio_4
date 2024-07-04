@@ -14,11 +14,12 @@ class Profile(models.Model):
 
 # post model to store blog posts
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)  # title for the post
-    content = models.TextField()  # content of the post
-    created_at = models.DateTimeField(auto_now_add=True)  # timestamp for post
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
+    @property
     def total_likes(self):
         return self.likes.count()
