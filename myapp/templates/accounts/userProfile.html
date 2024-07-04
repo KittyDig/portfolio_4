@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Profile</title>
+  <title>{{ user_obj.username }}'s Account</title>
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
 </head>
 <body>
   <div class="container">
-    <h2>User Profile: {{ user_obj.username }}</h2>
+    <h2>{{ user_obj.username }}'s Account</h2>
     
     {% if bio %}
       <p>Bio: {{ bio }}</p>
