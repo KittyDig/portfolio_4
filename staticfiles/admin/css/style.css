@@ -44,6 +44,10 @@ p {
   font-size: 1rem;
 }
 
+.bio {
+  text-align: center;
+}
+
 .username {
   color: #1da1f2;
 }
@@ -197,6 +201,6 @@ ul {
 
   button {
     padding: 20px 30px;
-    font-size: 2rem;
+    font-size: 1rem;
   }
 }
