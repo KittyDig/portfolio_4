@@ -50,7 +50,7 @@ def profile(request):
         'user_posts': user_posts,
         'bio': profile.bio,
     }
-    return render(request, 'accounts/profile.html', context)
+    return render(request, 'profile.html', context)
 
 # for deleting posts from the users page
 @login_required

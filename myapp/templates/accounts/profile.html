@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Username: {{ request.user.username }}'s Account</h2>
+    <h2>{{ request.user.username }}'s Account</h2>
     
     <!-- Button to go to Post Page -->
       <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
