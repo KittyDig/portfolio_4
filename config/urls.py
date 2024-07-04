@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import include, path
-from myapp import views
 
 # defines the URL patterns for the whole project
 urlpatterns = [
@@ -26,5 +25,4 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),  # login URL pattern
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # logout URL pattern
     path('accounts/', include('myapp.accounts.urls')),  # Include accounts URLs
-    path('like/<int:post_id>/', views.like_post, name='like_post'), # URL for liking posts
 ]
