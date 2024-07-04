@@ -3,48 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>{{ user_obj.username }}'s Account</title>
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
 </head>
 <body>
   <div class="container">
-
-    {% if user.is_authenticated %}
-    <h2>Welcome to the Home Page</h2>
-    <!-- Button to go to Post Page -->
-    <button onclick="window.location.href='{% url 'myapp:posts' %}'">Go to Post Page</button>
-    <!-- Button to view Profile -->
-    <button onclick="window.location.href='{% url 'myapp:profile' %}'">View Profile</button>
-    <!-- Button to logout -->
-    <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
-
-    {% for post in posts %}
-      <div class="post-box">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content }}</p>
-        <small>By <a class="username" href="{% url 'myapp:user_profile' post.author.username %}">{{ post.author.username }}</a> on {{ post.created_at }}</small>
-        
-        <!-- Like button and count -->
-        <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
-          {% if user in post.likes.all %}
-            Unlike
-          {% else %}
-            Like
-          {% endif %}
-        </button>
-        <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
-      </div>
-    {% endfor %}
-    {% else %}
-    <h2>Please log in or register to view all posts</h2>
-    <!-- Button to go to Login Page -->
-    <button onclick="window.location.href='{% url 'myapp:login' %}'">Login</button>
-    <!-- Button to go to Register Page -->
-    <button onclick="window.location.href='{% url 'myapp:register' %}'">Register</button>
+    <h2>{{ user_obj.username }}'s Account</h2>
+    
+    {% if bio %}
+      <p class="bio">{{ bio }}</p>
     {% endif %}
-  </div>
 
+    <!-- Button to go to Home Page -->
+    <button id="goToHomePage">Go to Home Page</button>
+    <h3>Posts by {{ user_obj.username }}</h3>
+    <ul>
+      {% for post in user_posts %}
+        <li class="post-box">
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.content }}</p>
+          <small>Posted on: {{ post.created_at }}</small>
+          <!-- Like button and count -->
+          <button id="like-button-{{ post.id }}" class="like-button" data-post-id="{{ post.id }}">
+            {% if user in post.likes.all %}
+              Unlike
+            {% else %}
+              Like
+            {% endif %}
+          </button>
+          <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span> likes
+        </li>
+      {% empty %}
+        <li>No posts found.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  
+  <!-- JavaScript script tag -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var likeButtons = document.querySelectorAll('.like-button');
@@ -76,5 +72,6 @@
       });
     });
   </script>
+  <script src="{% static 'js/navigation.js' %}"></script>
 </body>
 </html>
