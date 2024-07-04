@@ -1,6 +1,6 @@
 # My Django Project
 
-This is a Django project that includes user authentication, profile management, and post management features. Users can create accounts, log in, edit their profiles, create posts, and delete their posts with confirmation dialogs.
+This is a Django project that includes user authentication, profile management, and post management features. Users can create accounts, log in, edit their optional bio, create posts, view other user's accounts, and delete their posts with confirmation dialogs.
 
 ## Table of Contents
 
@@ -26,7 +26,10 @@ This is a Django project that includes user authentication, profile management, 
 - [Templates](#templates)
   - [Profile Template](#profile-template)
 - [Static Files](#static-files)
+  - [CSS](#css)
+  - [JS](#js)
 - [Routes](#routes)
+- [Sources](#sources)
 
 ## Motivation
 
@@ -34,7 +37,7 @@ The primary motivation for building this project was to create a personal bloggi
 
 ## Problem Solved
 
-This project addresses the need for a simple yet functional platform where individuals can maintain a personal blog. It provides an easy-to-use interface for users to register, create and manage content, and interact with their profiles. This can be particularly useful for developers, designers, and other professionals who want to share updates or articles.
+This project addresses the need for a simple yet functional platform where people can maintain a personal blog. It provides an easy-to-use interface for users to register, create and manage content, and interact with their own profile and others. This can be particularly useful for developers, designers, and other professionals who want to share updates or articles.
 
 ## Technologies Used
 
@@ -49,8 +52,9 @@ This project addresses the need for a simple yet functional platform where indiv
 - **Custom User Model**: Uses a custom user model to extend the default Django user functionality.
 - **User Profile Management**: Users can edit their bio.
 - **Blog Post Management**: Users can create, read, update, and delete blog posts.
+- **Viewing Other Profiles**: Users can click the usernames of other users to view their profiles.
 - **Responsive Design**: Ensures the application is accessible on various devices.
-- **Secure and Scalable**: Configured for secure authentication and deployed on Heroku for scalability.
+- **Secure and Scalable**: Configured for secure authentication with passwords encrypted in the database and deployed on Heroku for scalability.
 
 
 ## Installation
@@ -117,13 +121,13 @@ portfolio_4/
 ## Models
 
 # User
-Custom user model inheriting from AbstractUser.
+The custom user model inherits from AbstractUser to extend the default Django user functionality. This allows for future customization without modifying the built-in Django user model.
 
 # Profile
-Model to store additional information about the user, such as a bio and profile picture.
+The Profile model stores additional information about the user, such as a bio. It is linked to the User model via a one-to-one relationship.
 
 # Post
-Model to store user posts with title and content.
+The Post model stores user posts, including the title, content, and timestamp of creation. Each post is linked to an author, who is a user.
 
 ## Forms
 
@@ -134,15 +138,15 @@ Form for creating a new user.
 Form for updating the user profile with additional information like a bio.
 
 # PostForm
-Form for creating and updating posts.
+This form is used for creating and updating posts. It includes fields for the title and content of the post.
 
 ## Views
 
 # Profile View
-Allows users to view and edit their profile.
+The profile view allows users to view and edit their profile. It displays the user's posts and optional bio, and includes a form for editing the bio.
 
 # Post Management
-Allows users to create, view, and delete their posts.
+The post management views include functions for creating, viewing, and deleting posts. Each view ensures that the user is logged in before they can perform these actions.
 
 ## Templates
 
@@ -150,7 +154,25 @@ Allows users to create, view, and delete their posts.
 HTML template to display and edit the user profile.
 
 ## Static Files
-Static files such as CSS and images are stored in the staticfiles directory.
+Static files such as CSS, JS, and images are stored in the staticfiles directory.
+
+# CSS
+For the CSS in this project, I wanted it to have a sleek look, comparable to apps such as Instagram or Twitter. I wanted it to be mobile first design, so it looks good both on mobile devices and desktops.
+
+# JS
+The JavaScript in this project was not the main focus as this was a mainly Python built app, but it was used sparingly for moving from different pages.
 
 # Routes
 The routes for my application are defined in the urls.py file.
+
+## Sources
+# HTML files
+- https://github.com/dev-bittu/djcms - Template referencing.
+- https://github.com/dukeofhazardz/blog-app?tab=readme-ov-file#technologies - Help with both template structure and urls structure.
+# CSS
+- https://codepen.io/vladracoare/pen/YzEXveV - For inspiration for button type.
+- https://coolors.co/ - For theme colour ideas.
+# Views
+- https://github.com/Akash1362000/Django_BlogApp - Help with understanding views.
+# Models
+- https://docs.djangoproject.com/en/5.0/topics/auth/customizing/ - Help with understanding custom models.
