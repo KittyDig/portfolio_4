@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'London'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
