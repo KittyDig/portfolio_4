@@ -176,6 +176,8 @@ The routes for my application are defined in the urls.py file.
 - https://github.com/Akash1362000/Django_BlogApp - Help with understanding views.
 - https://github.com/shivamforever/django-Codewithnc.py/ - Based structure of views on parts of this code.
 - https://mentix02.medium.com/writing-instagram-in-python-liking-posts-51e072e4c51f - For help with liking posts code.
+- https://www.atlassian.com/data/sql - For SQL help and understanding.
+- https://stackoverflow.com/questions/29311354/how-to-set-the-timezone-in-django - For fixing a timezone problem.
 # Models
 - https://docs.djangoproject.com/en/5.0/topics/auth/customizing/ - Help with understanding custom models.
 - https://stackoverflow.com/questions/75121950/how-to-use-authenticate-method-with-abstractuser-model-django help with the authentication model.
