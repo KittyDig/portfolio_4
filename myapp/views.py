@@ -3,6 +3,7 @@ from myapp.models import User, Post, Profile
 from .forms import CustomUserCreationForm, PostForm, ProfileForm 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.utils import timezone
 
 # Handling user registration
 def register(request):
@@ -18,7 +19,8 @@ def register(request):
 
 # Home page view
 def home(request):
-    posts = Post.objects.all()  # retrieves all posts from the database
+    # Retrieve all posts ordered by created_at in descending order (newest first)
+    posts = Post.objects.order_by('-created_at')
     # renders the home template with all of the posts
     return render(request, 'home.html', {'posts': posts})
 
