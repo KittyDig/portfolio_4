@@ -15,7 +15,8 @@
       <button onclick="window.location.href='{% url 'myapp:logout' %}'">Logout</button>
     <!-- Link to edit bio -->
     <a href="{% url 'myapp:edit_bio' %}" class="button-link"><button>Edit Bio</button></a>
-    
+    <!-- Button to go to Home Page -->
+    <button id="goToHomePage">Go to Home Page</button>
     <!-- Display the user's bio -->
     <p>Bio: {% if bio %}{{ bio }}{% else %}No bio provided{% endif %}</p>
     
@@ -68,5 +69,8 @@
       document.getElementById('deleteForm_' + postId).submit();
     }
   </script>
+    </script>
+    <script src="{% static 'js/navigation.js' %}"></script>
+  </body>
 </body>
 </html>
